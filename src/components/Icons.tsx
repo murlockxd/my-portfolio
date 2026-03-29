@@ -1,6 +1,5 @@
 export function GithubIcon(props: any) {
   return (
-    // Cole aqui a tag <svg> exata que você tem, e passe o {props.className} nela
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -21,7 +20,6 @@ export function GithubIcon(props: any) {
 
 export function LinkedinIcon(props: any) {
   return (
-    // Cole aqui a tag <svg> exata que você tem, e passe o {props.className} nela
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"

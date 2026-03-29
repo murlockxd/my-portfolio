@@ -57,7 +57,7 @@ export default function Header() {
               transition-colors duration-300"
               style={{ fontWeight: "600" }}
             >
-              SOBRE
+              ABOUT ME
             </a>
             <a
               href="#projetos"
@@ -69,7 +69,7 @@ export default function Header() {
               transition-colors duration-300"
               style={{ fontWeight: "600" }}
             >
-              PROJETOS
+              PROJECTS
             </a>
             <a
               href="#contato"
@@ -81,7 +81,7 @@ export default function Header() {
               transition-colors duration-300"
               style={{ fontWeight: "600" }}
             >
-              CONTATO
+              CONTACT
             </a>
           </nav>
 
