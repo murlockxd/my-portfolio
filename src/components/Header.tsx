@@ -34,7 +34,7 @@ export default function Header() {
                   fontSize: "28px",
                   fontWeight: "900",
                   background:
-                    "linear-gradient(135deg, #ff006e 0%, #00d9ff 50%, #ffea00 100%)",
+                    "linear-gradient(135deg, #ff006e 0%, #00d9ff 50%, #ff5e00 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   textShadow: "0 0 20px rgba(255, 0, 110, 0.5)",
@@ -77,7 +77,7 @@ export default function Header() {
               text-gray-800
               dark:text-gray-200
               font-[family-name:var(--font-rajdhani)] 
-              tracking-wide hover:text-[#ffea00] 
+              tracking-wide hover:text-[#ff5e00] dark:hover:text-[#ffea00]
               transition-colors duration-300"
               style={{ fontWeight: "600" }}
             >

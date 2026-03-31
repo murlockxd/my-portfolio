@@ -1,3 +1,8 @@
+"use client";
+import Image from "next/image";
+import avatarLight from "../assets/avatar-light.svg";
+import avatarDark from "../assets/avatar-dark.svg";
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -35,7 +40,28 @@ export default function Hero() {
         style={{ animationDelay: "3s" }}
       ></div>
       {/* Conteúdo Principal (mt-20 compensa o espaço do cabeçalho fixo) */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-20">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-5 flex flex-col items-center">
+        <div className="relative w-80 h-60 mb-8 group">
+          {/* Avatar LIGHT (Aparece no Light Mode) */}
+          <Image
+            src={avatarLight}
+            alt="Iago Ilustração (Modo Claro)"
+            className="absolute inset-0 w-full h-full 
+                       transition-all duration-500 ease-in-out
+                       opacity-100 scale-100 dark:opacity-0 dark:scale-90"
+            /* ^ Explicando: Por padrão opacidade 100%. No escuro, vira opacidade 0 e diminui de tamanho sutilmente */
+          />
+
+          {/* Avatar DARK (Aparece no Dark Mode) */}
+          <Image
+            src={avatarDark}
+            alt="Iago Ilustração (Modo Escuro)"
+            className="absolute inset-0 w-full h-full 
+                       transition-all duration-500 ease-in-out
+                       opacity-0 scale-90 dark:opacity-100 dark:scale-100"
+            /* ^ Explicando: Por padrão opacidade 0. No escuro, vira opacidade 100% e aumenta de tamanho sutilmente */
+          />
+        </div>
         <div className="mb-6">
           <p
             className="font-[family-name:var(--font-rajdhani)] 
@@ -46,14 +72,13 @@ export default function Hero() {
           </p>
         </div>
         <h1
-          className="font-[family-name:var(--font-orbitron)] mb-6"
+          className="font-[family-name:var(--font-orbitron)] mb-6 
+             text-transparent bg-clip-text
+             bg-[linear-gradient(135deg,#ff006e_0%,#00d9ff_50%,#ff5e00_100%)]
+             dark:bg-[linear-gradient(135deg,#ff006e_0%,#00d9ff_50%,#ffea00_100%)]"
           style={{
             fontSize: "clamp(48px, 8vw, 96px)",
             fontWeight: "900",
-            background:
-              "linear-gradient(135deg, #ff006e 0%, #00d9ff 50%, #ffea00 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
             lineHeight: "1.1",
             textShadow: "0 0 40px rgba(255, 0, 110, 0.3)",
           }}
@@ -79,8 +104,8 @@ export default function Hero() {
             style={{ fontWeight: "700", fontSize: "18px" }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#ff006e] to-[#8b00ff] opacity-100 group-hover:opacity-0 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00d9ff] to-[#ffea00] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <span className="relative z-10 text-white group-hover:text-black">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00d9ff] to-[#ff5e00] dark:to-[#ffea00] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span className="relative z-10 text-white group-hover:text-black mt-[1px]">
               JUMP TO PROJECTS
             </span>
           </a>
@@ -88,11 +113,13 @@ export default function Hero() {
             href="#contact"
             className="group relative px-16 py-4 
             font-[family-name:var(--font-rajdhani)]
-            tracking-wider rounded-lg border-2 overlflow-hidden border-[#00d9ff]"
+            tracking-wider rounded-lg border-2 
+            overflow-hidden border-[#00d9ff]
+            flex items-center justify-center"
             style={{ fontWeight: "700", fontSize: "18px" }}
           >
             <div className="absolute inset-0 bg-[#00d9ff] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            <span className="relative z-10 text-transparent bg-gradient-to-r bg-clip-text from-[#ff006e] to-[#8b00ff] dark:from-[#00d9ff] dark:to-[#ffea00]">
+            <span className="relative z-10 text-transparent mt-[1px] bg-gradient-to-r bg-clip-text from-[#ff006e] to-[#8b00ff] dark:from-[#00d9ff] dark:to-[#ffea00]">
               GET IN TOUCH
             </span>
           </a>
@@ -100,7 +127,7 @@ export default function Hero() {
 
         {/* Indicador de Scroll animado */}
         <div
-          className="absolute bottom-10 left-51/100
+          className="absolute bottom-10 left-[51%]
           -translate-x-0 animate-bounce"
         >
           <div className="w-6 h-10 border-2 border-[#ff006e] rounded-full p-1">
