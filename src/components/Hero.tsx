@@ -41,26 +41,43 @@ export default function Hero() {
       ></div>
       {/* Conteúdo Principal (mt-20 compensa o espaço do cabeçalho fixo) */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-5 flex flex-col items-center">
-        <div className="relative w-80 h-60 mb-8 group">
-          {/* Avatar LIGHT (Aparece no Light Mode) */}
-          <Image
-            src={avatarLight}
-            alt="Iago Ilustração (Modo Claro)"
-            className="absolute inset-0 w-full h-full 
+        {/* Área do Avatar com Neon */}
+        <div className="relative w-80 h-60 mb-8 mx-auto flex justify-center group">
+          {/* Neon LIGHT (Rosa/Amarelo - Warm) */}
+          <div
+            className="absolute inset-10 rounded-full 
+                       transition-all duration-500 ease-in-out
+                       opacity-80 dark:opacity-0 blur-2xl
+                       bg-[linear-gradient(0deg,#ff006e,#ffea00)]"
+          ></div>
+          {/* Neon DARK (Ciano/Púrpura - Cool) */}
+          <div
+            className="absolute inset-10 rounded-full 
+                       transition-all duration-500 ease-in-out
+                       opacity-0 dark:opacity-60 blur-2xl
+                       bg-[linear-gradient(135deg,#00d9ff,#8b00ff)]"
+          ></div>
+          <div className="relative z-10 w-full h-full">
+            {/* Avatar LIGHT */}
+            <Image
+              src={avatarLight}
+              alt="Iago Ilustração (Modo Claro)"
+              className="absolute inset-0 w-full h-full 
                        transition-all duration-500 ease-in-out
                        opacity-100 scale-100 dark:opacity-0 dark:scale-90"
-            /* ^ Explicando: Por padrão opacidade 100%. No escuro, vira opacidade 0 e diminui de tamanho sutilmente */
-          />
+              /* ^ Explicando (Zoom): Opacidade 100%. No escuro, opacidade 0 e diminui de tamanho sutilmente */
+            />
 
-          {/* Avatar DARK (Aparece no Dark Mode) */}
-          <Image
-            src={avatarDark}
-            alt="Iago Ilustração (Modo Escuro)"
-            className="absolute inset-0 w-full h-full 
+            {/* Avatar DARK */}
+            <Image
+              src={avatarDark}
+              alt="Iago Ilustração (Modo Escuro)"
+              className="absolute inset-0 w-full h-full 
                        transition-all duration-500 ease-in-out
                        opacity-0 scale-90 dark:opacity-100 dark:scale-100"
-            /* ^ Explicando: Por padrão opacidade 0. No escuro, vira opacidade 100% e aumenta de tamanho sutilmente */
-          />
+              /* ^ Explicando (Zoom): Opacidade 0. No escuro, opacidade 100% e aumenta de tamanho sutilmente */
+            />
+          </div>
         </div>
         <div className="mb-6">
           <p
