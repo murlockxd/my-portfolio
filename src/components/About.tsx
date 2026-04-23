@@ -4,14 +4,18 @@ import { Code2, Palette, Zap, Rocket, LucideIcon } from "lucide-react";
 import Image from "next/image";
 import profilePhoto from "../assets/profile-photo.jpg";
 import { useGridSize } from "../hooks/useGridSize";
+import { useTheme } from "next-themes";
 
 export default function About() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const bgSize = useGridSize(50);
   type Skill = {
     icon: LucideIcon;
     title: string;
     description: string;
     color: string;
+    darkColor: string;
   };
   const skills: Skill[] = [
     {
@@ -19,24 +23,28 @@ export default function About() {
       title: "Development",
       description: "React, TypeScript, Node.js, Next.js",
       color: "#ff006e",
+      darkColor: "#ff006e",
     },
     {
       icon: Palette,
       title: "Design",
       description: "UI/UX, Figma, Tailwind CSS",
-      color: "#00d9ff",
+      color: "#00b2d1",
+      darkColor: "#00d9ff",
     },
     {
       icon: Zap,
       title: "Performance",
-      description: "Otimização e velocidade",
-      color: "#ffea00",
+      description: "Optimization and Efficiency",
+      color: "#ff5e00",
+      darkColor: "#ffea00",
     },
     {
       icon: Rocket,
       title: "Innovation",
       description: "Always seeking new solutions",
       color: "#8b00ff",
+      darkColor: "#8b00ff",
     },
   ];
   return (
@@ -73,12 +81,12 @@ export default function About() {
             className="font-[family-name:var(--font-orbitron)] mb-4
             text-transparent bg-clip-text
             bg-[linear-gradient(135deg,#ff006e_0%,#00d9ff_100%)]"
-            style={{ fontWeight: "900", fontSize: "clamp(36px, 5vw, 64px" }}
+            style={{ fontWeight: "900", fontSize: "clamp(36px, 5vw, 64px)" }}
           >
             ABOUT ME
           </h2>
           {/* Linha colorida de separação */}
-          <div className="w-24 h1 bg-gradient-to-r from-[#ff006e] via-[#8b00ff] to-[#00d9ff] mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#ff006e] via-[#8b00ff] to-[#00d9ff] mx-auto rounded-full"></div>
         </div>
         {/* ÁREA PRINCIPAL */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16 3xl:mb-20">
@@ -111,7 +119,7 @@ export default function About() {
               fascinated by generating solutions through code. My specialties
               include{" "}
               <strong>
-                Java, Spring Boot, SQL, HTML, CSS, JavaScript, GIT
+                Java, Spring Boot, SQL, HTML, CSS, JavaScript, Git
               </strong>{" "}
               and modern ecosystems like{" "}
               <strong>React, Tailwind CSS and Next.js</strong>.
@@ -146,19 +154,21 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
+            const currentColor =
+              isDark && skill.darkColor ? skill.darkColor : skill.color;
             return (
               <div
                 key={index}
                 className="group relative p-6 rounded-xl 
-                border bg-[#40011c]/30 dark:bg-[#1a0033]/40 backdrop-blur-sm 
+                border bg-[#1a0033]/10 dark:bg-[#1a0033]/40
                 transition-all duration-300 hover:scale-105"
-                style={{ borderColor: skill.color }}
+                style={{ borderColor: `${currentColor}` }}
               >
                 {/* Brilho no hover do card */}
                 <div
                   className="absolute inset-0 rounded-xl opacity-0 
                   group-hover:opacity-20 transition-opacity duration-300 blur-xl"
-                  style={{ backgroundColor: `${skill.color}` }}
+                  style={{ backgroundColor: `${currentColor}` }}
                 ></div>
                 {/* ICON AND TEXT */}
                 <div className="relative z-10">
@@ -167,13 +177,13 @@ export default function About() {
                       className="w-10 3xl:w-14 h-10 3xl:h-14 rounded-lg flex 
                     items-center justify-center  3xl:mb-4"
                       style={{
-                        backgroundColor: `${skill.color}20`,
-                        border: `2px solid ${skill.color}40`,
+                        backgroundColor: `${currentColor}20`,
+                        border: `2px solid ${currentColor}40`,
                       }}
                     >
                       <Icon
                         className="size-5 3xl:size-7"
-                        style={{ color: skill.color }}
+                        style={{ color: currentColor }}
                       ></Icon>
                     </div>
                     <h3
@@ -181,7 +191,7 @@ export default function About() {
                       style={{
                         fontSize: "20px",
                         fontWeight: "700",
-                        color: skill.color,
+                        color: currentColor,
                       }}
                     >
                       {skill.title}

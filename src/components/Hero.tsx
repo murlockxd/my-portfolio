@@ -2,20 +2,34 @@
 import Image from "next/image";
 import avatarLight from "../assets/avatar-light.svg";
 import avatarDark from "../assets/avatar-dark.svg";
+import { useGridSize } from "../hooks/useGridSize";
 
 export default function Hero() {
+  const bgSize = useGridSize(50);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Fundo de grade animada com opacidade controlada para claro/escuro */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-20">
+      <div className="absolute inset-0 opacity-20 dark:opacity-30">
         <div
-          className="absolute inset-0"
+          className="absolute inset-x-0 bottom-0 h-[1200px]"
           style={{
-            backgroundImage: `linear-gradient(rgba(139, 0, 255, 0.3) 1px, transparent 5px),
-                              linear-gradient(90deg, rgba(139, 0, 255, 0.3) 1px, transparent 5px)`,
-            backgroundSize: "50px 50px",
-            transform: "perspective(500px) rotateX(50deg)",
+            // 1º: Linhas Horizontais | 2º: Linhas Verticais | 3º: A linha final na extrema direita
+            backgroundImage: `
+              linear-gradient(rgba(139, 0, 255, 0.3) 1px, transparent 5px),
+              linear-gradient(90deg, rgba(139, 0, 255, 0.3) 1px, transparent 5px),
+              linear-gradient(to left, rgba(139, 0, 255, 0.3) 1px, transparent 5px)
+            `,
+            // Passamos a variável calculada para os dois primeiros, e 100% para o terceiro tampar a borda
+            backgroundSize: `${bgSize} ${bgSize}, ${bgSize} ${bgSize}, 100% 100%`,
+            backgroundRepeat: "repeat, repeat, no-repeat",
+            backgroundPosition: "left bottom",
+            transform: "perspective(800px) rotateX(50deg) translateZ(0)",
             transformOrigin: "center bottom",
+            WebkitMaskImage:
+              "linear-gradient(to top, black 0%, black 60%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to top, black 0%, black 60%, transparent 100%)",
+            filter: "drop-shadow(0 0 0 rgba(139, 0, 255, 1))",
           }}
         ></div>
       </div>

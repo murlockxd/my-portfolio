@@ -4,7 +4,7 @@ import About from "../components/About";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-[#0a0015] transition-colors duration-300">
+    <main className="min-h-screen bg-[#fefaff] dark:bg-[#0a0015] transition-colors duration-300">
       <Header />
       <Hero />
       <About />

@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 
-        border-b border-[#ff006e]/50 backdrop-blur-md bg-white/80 dark:bg-black/80"
+        border-b border-[#ff006e]/50 backdrop-blur-md bg-[#fefaff]/70 dark:bg-[#0a0015]/70"
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -48,7 +48,7 @@ export default function Header() {
           {/* Centro: Links de Navegação */}
           <nav className="flex items-center gap-6">
             <a
-              href="#sobre"
+              href="#about"
               className="
               text-gray-800
               dark:text-gray-200
@@ -60,7 +60,7 @@ export default function Header() {
               ABOUT ME
             </a>
             <a
-              href="#projetos"
+              href="#projects"
               className="
               text-gray-800
               dark:text-gray-200
@@ -72,7 +72,7 @@ export default function Header() {
               PROJECTS
             </a>
             <a
-              href="#contato"
+              href="#contact"
               className="
               text-gray-800
               dark:text-gray-200
