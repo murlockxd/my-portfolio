@@ -5,10 +5,18 @@ import Image from "next/image";
 import profilePhoto from "../assets/profile-photo.jpg";
 import { useGridSize } from "../hooks/useGridSize";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function About() {
   const { resolvedTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
+  const [mounted, setMounted] = useState(false);
+
+  // useEffect to run only on client side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDark = mounted && resolvedTheme === "dark";
   const bgSize = useGridSize(50);
   type Skill = {
     icon: LucideIcon;
