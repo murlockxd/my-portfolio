@@ -165,52 +165,61 @@ export default function About() {
             const currentColor =
               isDark && skill.darkColor ? skill.darkColor : skill.color;
             return (
-              <div
-                key={index}
-                className="group relative p-6 rounded-xl 
-                border bg-[#1a0033]/10 dark:bg-[#1a0033]/40
-                transition-all duration-300 hover:scale-105"
-                style={{ borderColor: `${currentColor}` }}
-              >
-                {/* Brilho no hover do card */}
+              <div key={index} className="group relative">
+                {/* Glow */}
                 <div
-                  className="absolute inset-0 rounded-xl opacity-0 
-                  group-hover:opacity-20 transition-opacity duration-300 blur-xl"
-                  style={{ backgroundColor: `${currentColor}` }}
+                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 
+                  transition-opacity duration-300 blur-xl 
+                  group-hover:-translate-y-1
+                  pointer-events-none"
+                  style={{ backgroundColor: currentColor }}
                 ></div>
-                {/* ICON AND TEXT */}
-                <div className="relative z-10">
-                  <div className="flex items-center mb-4 gap-4 3xl:block">
-                    <div
-                      className="w-10 3xl:w-14 h-10 3xl:h-14 rounded-lg flex 
-                    items-center justify-center  3xl:mb-4"
-                      style={{
-                        backgroundColor: `${currentColor}20`,
-                        border: `2px solid ${currentColor}40`,
-                      }}
-                    >
-                      <Icon
-                        className="size-5 3xl:size-7"
-                        style={{ color: currentColor }}
-                      ></Icon>
-                    </div>
-                    <h3
-                      className="font-[family-name:var(--font-orbitron)]"
-                      style={{
-                        fontSize: "20px",
-                        fontWeight: "700",
-                        color: currentColor,
-                      }}
-                    >
-                      {skill.title}
-                    </h3>
-                  </div>
-                  <p
-                    className="font-[family-name:var(--font-rajdhani)] text-gray-800 dark:text-gray-300"
-                    style={{ fontSize: "16px", fontWeight: "700" }}
+
+                {/* Card real */}
+                <div
+                  className="relative p-6 rounded-xl border bg-[#1a0033]/10 dark:bg-[#1a0033]/40
+                     overflow-hidden transition-transform duration-300 ease-out 
+                     transform-gpu will-change-transform
+                     group-hover:-translate-y-1 group-hover:scale-[1.02]"
+                  style={{ borderColor: currentColor }}
+                >
+                  <div
+                    className="relative z-10 transition-transform transform-gpu duration-300 ease-out
+                       origin-center group-hover:scale-[0.9804]"
                   >
-                    {skill.description}
-                  </p>
+                    <div className="flex items-center mb-4 gap-4 3xl:block">
+                      <div
+                        className="w-10 3xl:w-14 h-10 3xl:h-14 rounded-lg flex items-center justify-center 3xl:mb-4"
+                        style={{
+                          backgroundColor: `${currentColor}20`,
+                          border: `2px solid ${currentColor}40`,
+                        }}
+                      >
+                        <Icon
+                          className="size-5 3xl:size-7"
+                          style={{ color: currentColor }}
+                        />
+                      </div>
+
+                      <h3
+                        className="font-[family-name:var(--font-orbitron)]"
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: "700",
+                          color: currentColor,
+                        }}
+                      >
+                        {skill.title}
+                      </h3>
+                    </div>
+
+                    <p
+                      className="font-[family-name:var(--font-rajdhani)] text-gray-800 dark:text-gray-300"
+                      style={{ fontSize: "16px", fontWeight: "700" }}
+                    >
+                      {skill.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
