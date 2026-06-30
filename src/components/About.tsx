@@ -2,7 +2,7 @@
 
 import { Code2, Palette, Zap, Rocket, LucideIcon } from "lucide-react";
 import Image from "next/image";
-import profilePhoto from "../assets/profile-photo.jpg";
+import profilePhoto from "../assets/profile-photo-2.png";
 import { useGridSize } from "../hooks/useGridSize";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
